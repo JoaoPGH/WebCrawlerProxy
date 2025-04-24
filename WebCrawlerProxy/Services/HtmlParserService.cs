@@ -24,10 +24,10 @@ namespace WebCrawlerProxy.Services
                     {
                         proxies.Add(new ProxyData
                         {
-                            Ip = cells[0].InnerText.Trim(),
-                            Port = cells[1].InnerText.Trim(),
-                            Country = cells[2].InnerText.Trim(),
-                            Protocol = cells[3].InnerText.Trim()
+                            Ip = cells[1].InnerText.Trim(),
+                            Port = cells[2].InnerText.Trim(),
+                            Country = cells[3].InnerText.Trim(),
+                            Protocol = cells[6].InnerText.Trim()
                         });
                     }
                 }
