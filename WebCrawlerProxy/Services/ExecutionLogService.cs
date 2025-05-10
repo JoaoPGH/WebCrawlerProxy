@@ -13,7 +13,7 @@ namespace WebCrawlerProxy.Services
             _connectionString = connectionString;
         }
 
-        public void LogExecution(DateTime startTime, DateTime endTime, int pageCount, int lineCount, string jsonPath)
+        public void LogExecution( int pageCount, int lineCount, string jsonPath)
         {
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();
@@ -25,8 +25,8 @@ namespace WebCrawlerProxy.Services
 
             connection.Execute(query, new
             {
-                StartTime = startTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                EndTime = endTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                EndTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 PageCount = pageCount,
                 LineCount = lineCount,
                 JsonFilePath = jsonPath

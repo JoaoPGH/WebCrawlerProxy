@@ -21,10 +21,7 @@ namespace WebCrawlerProxy.Services
             var jsonDir = Path.Combine(rootPath, "json_output");
             var dbPath = Path.Combine(rootPath, "database.db");
 
-            Directory.CreateDirectory(htmlDir);
-            Directory.CreateDirectory(jsonDir);
 
-            var startTime = DateTime.Now;
 
             var httpClient = new HttpClient();
             var crawlerService = new CrawlerService(httpClient);
@@ -92,9 +89,8 @@ namespace WebCrawlerProxy.Services
             await Task.WhenAll(tasks);
 
             var jsonPath = jsonService.SaveToJson(allProxies, jsonDir);
-            var endTime = DateTime.Now;
 
-            logService.LogExecution(startTime, endTime, pageCount, allProxies.Count, jsonPath);
+            logService.LogExecution(pageCount, allProxies.Count, jsonPath);
 
             Console.WriteLine($"\nCrawler finalizado com sucesso!");
             Console.WriteLine($"Páginas processadas: {pageCount}");
